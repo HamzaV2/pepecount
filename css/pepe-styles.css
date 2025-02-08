@@ -4631,8 +4631,9 @@ figcaption {
     flex-flow: column;
   }
 
-  .one-partner-logo {
-    width: 100%;
+   .one-partner-logo {
+    margin-left: 3px;
+    margin-right: 3px;
   }
 
   .grid-partners-wrapper {
