@@ -3299,7 +3299,11 @@ figcaption {
   padding: 2.5rem 0;
   display: flex;
 }
-
+.mobile-partners {
+  width: 100%;
+  padding-top: 1.5rem;
+  display: none;
+}
 .h2-smaller {
   flex: none;
   font-size: 3.25rem;
@@ -4638,7 +4642,7 @@ figcaption {
     grid-template-columns: 1fr 1fr;
     grid-auto-columns: 1fr;
     place-items: center;
-    display: grid;
+    display: none;
   }
 
   .form-wrapper {
@@ -4684,6 +4688,11 @@ figcaption {
   .form_input-dark.is-sub {
     padding-right: 9.5rem;
   }
+
+    .mobile-partners {
+    display: block;
+  }
+}
 
   .h2-center-mobile, .center-mobile {
     text-align: center;
