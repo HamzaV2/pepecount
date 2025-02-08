@@ -13,10 +13,15 @@ module.exports = async (req, res) => {
     return;
   }
 
-  
-  const message = encodeURIComponent(`Нова заявка: ${email}\nДата: ${new Date().toISOString()}`);
-  const botToken = process.env.7927667369:AAHQgB1GzChyg1Lgm2hY_1VrbaULosNz8CQ; 
-  const chatId = process.env.56774676; 
+  const message = encodeURIComponent(`New submission: ${email}\nДата: ${new Date().toISOString()}`);
+  const botToken = process.env.TELEGRAM_BOT_TOKEN; 
+  const chatId = process.env.TELEGRAM_CHAT_ID;     
+
+ 
+  if (!botToken || !chatId) {
+    res.status(500).send("Server misconfiguration: missing botToken or chatId.");
+    return;
+  }
 
   const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`;
 
@@ -28,7 +33,6 @@ module.exports = async (req, res) => {
     });
   }).on('error', (err) => {
     console.error("Error sending message:", err);
-    res.status(500).send("Error sending message:");
+    res.status(500).send("Error sending message.");
   });
 };
-
