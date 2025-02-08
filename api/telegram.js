@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const message = encodeURIComponent(`New submission: ${email}\nДата: ${new Date().toISOString()}`);
+  const message = encodeURIComponent(`New submission: ${email}\nDate: ${new Date().toISOString()}`);
   const botToken = process.env.TELEGRAM_BOT_TOKEN; 
   const chatId = process.env.TELEGRAM_CHAT_ID;     
 
