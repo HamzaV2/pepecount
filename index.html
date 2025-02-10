@@ -877,7 +877,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 document.getElementById("wf-form-Subscibe-Form").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const form = event.target;
     const emailInput = form.querySelector("#Email-sub");
@@ -885,34 +885,32 @@ document.getElementById("wf-form-Subscibe-Form").addEventListener("submit", asyn
     const errorMessage = document.querySelector(".w-form-fail");
     const submitButton = form.querySelector('input[type="submit"]');
 
-    
     const email = emailInput.value.trim();
     if (!email) {
         alert("Please enter a valid email!");
         return;
     }
 
-    
     submitButton.value = "Please wait...";
     submitButton.disabled = true;
 
     try {
-      
-        const response = await fetch("/api/telegram?Email=" + encodeURIComponent(email), {
-            method: "GET",
+        const response = await fetch("/api/supabase", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
         });
 
         if (response.ok) {
-            form.style.display = "none"; 
-            successMessage.style.display = "block"; 
+            form.style.display = "none";
+            successMessage.style.display = "block";
         } else {
             throw new Error("Server error");
         }
     } catch (error) {
         console.error("Error:", error);
-        errorMessage.style.display = "block"; 
+        errorMessage.style.display = "block";
     } finally {
-        
         submitButton.value = "Send";
         submitButton.disabled = false;
     }
