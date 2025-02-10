@@ -20,24 +20,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {  // 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+        "Prefer": "return=minimal"
       },
-      body: JSON.stringify({ email })
+      body: JSON.stringify([{ email }]) // 
     });
 
-    const data = await response.json();
-
     if (!response.ok) {
-      console.error("Supabase error:", data);
-      return res.status(500).json({ error: "Failed to save email" });
+      const errorData = await response.json();
+      console.error("Supabase API error:", errorData);
+      return res.status(500).json({ error: "Supabase API error", details: errorData });
     }
 
-    return res.status(200).json({ message: "Success! Email saved 🎉", data });
+    return res.status(200).json({ message: "Success! Email saved 🎉" });
   } catch (error) {
     console.error("Server error:", error);
     return res.status(500).json({ error: "Internal server error" });
