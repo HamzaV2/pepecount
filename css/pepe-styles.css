@@ -3026,7 +3026,7 @@ figcaption {
 .pepe-wrapper {
   justify-content: center;
   align-items: center;
-  width: 18rem;
+  width: 22rem;
   height: 18rem;
   display: flex;
   position: relative;
@@ -3195,7 +3195,7 @@ figcaption {
   grid-row-gap: 1.5rem;
   flex-flow: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   display: flex;
 }
 
