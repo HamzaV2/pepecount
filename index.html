@@ -231,10 +231,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: 0.6rem;
+  grid-row-gap: 0.6rem;
 }
-          
+          .numbers {
+font-family: Trs Million Rg, Arial, sans-serif;
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.2;
+
+            
+          }
           </style>
 
 
@@ -1006,8 +1013,8 @@ document.getElementById("wf-form-Subscibe-Form").addEventListener("submit", asyn
   
 <script>
 function updateCountdowns() {
-  // December 12, 2024, 12:00 PM CST (UTC-6) -> 2024-12-12T18:00:00.000Z in UTC
-  const endTime = new Date('2025-02-27T18:00:00.000Z'); // Фіксована дата у UTC
+  // December 12, 2024, 12:00 PM CST (UTC-6) -> 2024-12-12T18:00:00.000Z in UTC Thursday 1pm UTC
+  const endTime = new Date('2025-02-20T13:00:00.000Z'); // Фіксована дата у UTC
   const now = new Date(); // Поточний час користувача у UTC
   const remainingTime = endTime - now;
 
